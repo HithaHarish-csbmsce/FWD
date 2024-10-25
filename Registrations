@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant Registration</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Reset some default browser styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* Container styling */
+        .form-container {
+            background-color: #ffffff;
+            padding: 3rem; /* Increased padding for the container */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px; /* Further increased max width for a wider form */
+            width: 100%; /* Full width for responsiveness */
+        }
+
+        h2, h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Form field styling */
+        .form-field {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-field label {
+            flex: 1;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-field i {
+            margin-right: 8px;
+            color: #888;
+        }
+
+        .form-field select,
+        .form-field input {
+            flex: 2;
+            padding: 14px; /* Increased padding for input fields */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Select and Input field styling */
+        .form-field select:focus,
+        .form-field input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 14px; /* Increased padding for submit button */
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Team Member Container */
+        .team-member {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Participant Registration</h2>
+        <form action="submit_participant.php" method="POST">
+            <!-- Choose Single or Team -->
+            <div class="form-field">
+                <i class="fas fa-users"></i>
+                <label for="isTeam">Are you a single participant or part of a team?</label>
+                <select id="isTeam" name="isTeam" required onchange="toggleTeamSize()">
+                    <option value="">Select</option>
+                    <option value="single">Single Participant</option>
+                    <option value="team">Team</option>
+                </select>
+            </div>
+
+            <!-- Static Team Size Selection (Max Size: 5) -->
+            <div class="form-field">
+                <i class="fas fa-user-friends"></i>
+                <label for="teamSize">Select Team Size:</label>
+                <select id="teamSize" name="teamSize" required onchange="updateTeamMembers()">
+                    <option value="">Select Team Size</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <!-- Team Member Details Container -->
+            <div id="teamMembersContainer"></div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleTeamSize() {
+            const isTeamSelect = document.getElementById('isTeam');
+            const teamSizeSelect = document.getElementById('teamSize');
+            const teamMembersContainer = document.getElementById('teamMembersContainer');
+
+            // Clear previous member details
+            teamMembersContainer.innerHTML = '';
+
+            // Disable team size if "Single Participant" is selected
+            if (isTeamSelect.value === 'single') {
+                teamSizeSelect.value = "1";
+                teamSizeSelect.disabled = true;
+                addTeamMemberFields(1); // Add fields for single participant
+            } else {
+                teamSizeSelect.disabled = false;
+                updateTeamMembers(); // Update fields based on selected team size
+            }
+        }
+
+        function updateTeamMembers() {
+            const teamSize = document.getElementById('teamSize').value;
+            const teamMembersContainer = document.getElementById('teamMembersContainer');
+
+            // Clear previous member details
+            teamMembersContainer.innerHTML = '';
+
+            // Add fields for each team member
+            for (let i = 1; i <= teamSize; i++) {
+                addTeamMemberFields(i);
+            }
+        }
+
+        function addTeamMemberFields(index) {
+            const teamMembersContainer = document.getElementById('teamMembersContainer');
+            const memberDiv = document.createElement('div');
+            memberDiv.classList.add('team-member');
+
+            memberDiv.innerHTML = `
+                <h3>Team Member ${index}</h3>
+                <div class="form-field">
+                    <i class="fas fa-user"></i>
+                    <label for="name${index}">Name:</label>
+                    <input type="text" id="name${index}" name="name${index}" required>
+                </div>
+                <div class="form-field">
+                    <i class="fas fa-id-badge"></i>
+                    <label for="usn${index}">USN:</label>
+                    <input type="text" id="usn${index}" name="usn${index}" required>
+                </div>
+                <div class="form-field">
+                    <i class="fas fa-envelope"></i>
+                    <label for="collegeEmail${index}">College Mail ID:</label>
+                    <input type="email" id="collegeEmail${index}" name="collegeEmail${index}" required>
+                </div>
+                <div class="form-field">
+                    <i class="fas fa-phone"></i>
+                    <label for="contact${index}">Contact Number:</label>
+                    <input type="tel" id="contact${index}" name="contact${index}" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-field">
+                    <i class="fas fa-building"></i>
+                    <label for="branch${index}">Branch:</label>
+                    <select id="branch${index}" name="branch${index}" required>
+                        <option value="">Select your branch</option>
+                        <option value="cse">Computer Science</option>
+                        <option value="ece">Electronics & Communication</option>
+                        <option value="mech">Mechanical Engineering</option>
+                        <option value="civil">Civil Engineering</option>
+                        <option value="eee">Electrical & Electronics Engineering</option>
+                        <option value="it">Information Technology</option>
+                        <option value="bio">Biotechnology</option>
+                        <option value="aero">Aerospace Engineering</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <i class="fas fa-calendar"></i>
+                    <label for="semester${index}">Semester:</label>
+                    <select id="semester${index}" name="semester${index}" required>
+                        <option value="">Select your semester</option>
+                        <option value="1">1st Semester</option>
+                        <option value="2">2nd Semester</option>
+                        <option value="3">3rd Semester</option>
+                        <option value="4">4th Semester</option>
+                        <option value="5">5th Semester</option>
+                        <option value="6">6th Semester</option>
+                        <option value="7">7th Semester</option>
+                        <option value="8">8th Semester</option>
+                    </select>
+                </div>
+            `;
+            teamMembersContainer.appendChild(memberDiv);
+        }
+    </script>
+</body>
+</html>
