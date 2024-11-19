@@ -1,136 +1,238 @@
-<html !DOCTYPE5>
-</head>
+<!DOCTYPE html>
+<html>
+<head>
     <title>Upcoming Events</title>
     <style>
-    *{
-        background-color: black;
-        color:#F0EDCF;
-        font-family: 'Signika Negative', sans-serif;
-    }
-    .flex2{
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .logo1,.logo2{
-        height:180px;
-        width:180px;
-    }
-    .heading{
-        display:flex;
-        flex-direction: row;
-        align-items: top;
-        justify-content:space-around;
-        margin-top: 40px;
-      }
-    .topicheading{
-        text-align: start;
-        margin-left: 70px;
-        margin-top:50px;
-    }
-    h1{
-        justify-content: space-around;
-        align-items: center;
-        text-align: center;
-        margin: 0px;
-        padding: 0px;
-    }
-    h2{
-        justify-content: space-around;
-        align-items: center;
-        text-align: center;
-    }
-    .gravitas-one-regular {
-        font-family: "Gravitas One", serif;
-        font-weight: 400;
-        font-style: normal;
-      }
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Signika Negative', sans-serif;
+        }
+        body {
+            background-color: #000;
+            color: #F0EDCF;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #40a2d8;
+        }
+        h2 {
+            font-size: 1.5rem;
+            color: #40a2d8;
+        }
+        h3 {
+            font-size: 1rem;
+            color: #F0EDCF;
+        }
 
-      .saira-stencil-one-regular {
-        font-family: "Saira Stencil One", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        color:red;
-      }
-      .events{
-        margin-top: 50px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-      }
-      .event{
-        display: flex;
-        flex-direction: column;
-      }
-      .eimg{
-        width:200px;
-      }
-      h3{
-        align-self: center;
-        justify-content: center;
-        align-content: center;
-      }
-      button{
-        padding: 5px;
-        border-radius: 5px;
-        background-color:red;
-        color:bisque;
-        font-weight: 700;
-      }
-      button:hover{
-        background-color:rgb(4, 157, 253);
-      }
-      button:active{
-        background-color:greenyellow;
-        color:black;
-      }
-  </style>
+        /* Header styles */
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .logo1, .logo2 {
+            height: 150px;
+            width: auto;
+            margin:40px;
+        }
+
+        /* Events section */
+        .events {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+        .event {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .event:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        }
+        .eimg {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        h2 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        p {
+            color: #cfcfcf;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .event-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-grow: 1;
+        }
+        .button-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d72e2e;
+            color: bisque;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: rgb(4, 157, 253);
+        }
+        button:active {
+            background-color: greenyellow;
+            color: black;
+        }
+
+        /* Section heading */
+        .topicheading {
+            margin: 50px auto 20px;
+            text-align: center;
+            font-size: 1.8rem;
+            color: red;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .heading {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .events {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            .event {
+                width: 90%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header Section -->
     <div class="heading">
-      <a href=https://www.bmsce.ac.in/ target="_blank"><img class="logo1" src="BMSCE.webp" alt="BMSCE"></a>
-    <div class="flex2" style="padding-top: 30px;">
-      <h1 style="color:#40a2d8">BMS COLLEGE OF ENGINEERING</h1>
-      <h2 class="cookie-regular;" style="color:#F0EDCF;">features</h2>
-      <h1 style="color: #d72e2e;">PENTAGRAM</h1>
-      <h2 style="color:#40a2d8">The Mathematical Society of BMSCE</h2>
+        <a href="https://www.bmsce.ac.in/" target="_blank">
+            <img class="logo1" src="BMSCE.webp" alt="BMSCE">
+        </a>
+        <div class="flex2">
+            <h1>BMS COLLEGE OF ENGINEERING</h1>
+            <h1 style="color:#d72e2e;">PENTAGRAM</h1>
+            <h2 style="color:bisque">The Mathematical Society of BMSCE</h2>
+        </div>
+        <a href="file:///C:/Users/DELL/Downloads/CLUB.html" target="_blank">
+            <img class="logo2" src="pentagram.png" alt="BMSCE Pentagram">
+        </a>
     </div>
-      <a href="file:///C:/Users/DELL/Downloads/CLUB.html" target="_blank"><img class="logo2" src="pentagram.png" alt="BMSCE Pentagram"></a>
-    </div>
-    <h2 class="topicheading" style="color:red;">UPCOMING EVENTS</h2>
+
+    <!-- Events Section -->
+    <h1 class="topicheading" style="color:#d72e2e; font-size: xxxxxx-large;">UPCOMING EVENTS</h1>
+    <h2>Thanks for your Patience!</h2>
+    <h3>We are back with more exciting events!</h3>
     <div class="events">
+        <!-- Event 1 -->
         <div class="event">
-            <img class="eimg" src="Screenshot 2024-11-14 211911.png">
-            <h3>EUREKA ORIENTATION</h3>
-            <button>Register</button>
+            <img class="eimg" src="Screenshot 2024-11-14 211911.png" alt="Eureka Orientation">
+            <div class="event-content">
+                <h2>EUREKA ORIENTATION</h2>
+                <p>Kickstart your journey with Pentagram through exciting games and engaging activities! Happening on November 8, 2024, in Audi 1, PJ Block.</p>
+            </div>
+            <div class="button-wrapper">
+                <button>Register</button>
+            </div>
         </div>
+
+        <!-- Event 2 -->
         <div class="event">
-            <img class="eimg" src="Screenshot 2024-11-14 212221.png">
-            <h3>ENCIPHER</h3>
-            <button>Register</button>
+            <img class="eimg" src="Screenshot 2024-11-14 212221.png" alt="Encipher">
+            <div class="event-content">
+                <h2>ENCIPHER</h2>
+                <p>Test your wits with thrilling puzzles online and compete for cash prizes. Join us on July 10, 2024, from 6 to 8:30 PM!</p>
+            </div>
+            <div class="button-wrapper">
+                <button>Register</button>
+            </div>
         </div>
+
+        <!-- Event 3 -->
         <div class="event">
-            <img class="eimg" src="Screenshot 2024-11-14 212321.png">
-            <h3>PI CARNIVAL</h3>
-            <button>Register</button>
+            <img class="eimg" src="Screenshot 2024-11-14 212321.png" alt="Pi Carnival">
+            <div class="event-content">
+                <h2>PI CARNIVAL</h2>
+                <p>Experience the joy of math through games, contests, and a festive atmosphere. Join us on July 9-10, 2024, at Bookmark.</p>
+            </div>
+            <div class="button-wrapper">
+                <button>Register</button>
+            </div>
         </div>
     </div>
+
     <div class="events">
+        <!-- Event 4 -->
         <div class="event">
-            <img class="eimg" src="Screenshot 2024-11-14 220943.png">
-            <h3>BATTLE OF BRAINS</h3>
-            <button>Register</button>
+            <img class="eimg" src="Screenshot 2024-11-14 220943.png" alt="Battle of Brains">
+            <div class="event-content">
+                <h2>BATTLE OF BRAINS</h2>
+                <p>Prove your intellect in this fast-paced quiz! Be there on May 18, 2024, at 10 AM in the MESH Block.</p>
+            </div>
+            <div class="button-wrapper">
+                <button>Register</button>
+            </div>
         </div>
+
+        <!-- Event 5 -->
         <div class="event">
-            <img class="eimg" src="Screenshot 2024-11-14 220907.png">
-            <h3>ESCAPE ROOM</h3>
-            <button>Register</button>
+            <img class="eimg" src="Screenshot 2024-11-14 220907.png" alt="Escape Room">
+            <div class="event-content">
+                <h2>ESCAPE ROOM</h2>
+                <p>Crack codes and solve mysteries to win! Happening on May 19, 2024.</p>
+            </div>
+            <div class="button-wrapper">
+                <button>Register</button>
+            </div>
         </div>
+
+        <!-- Event 6 -->
         <div class="event">
-            <img class="eimg" src="Screenshot 2024-11-14 220830.png">
-            <h3>VOLT VICTORY</h3>
-            <button>Register</button>
+            <img class="eimg" src="Screenshot 2024-11-14 220830.png" alt="Volt Victory">
+            <div class="event-content">
+                <h2>VOLT VICTORY</h2>
+                <p>Showcase your skills in this exciting collaboration event! Happening on June 12, 2024, in CR-G01, PJ Block.</p>
+            </div>
+            <div class="button-wrapper">
+                <button>Register</button>
+            </div>
         </div>
     </div>
 </body>
