@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Londrina+Sketch&family=Mate:ital@0;1&display=swap" rel="stylesheet">
     <title>Upcoming Events</title>
     <style>
-        /* General styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Signika Negative', sans-serif;
+            font-family: "DM serif Display";
+        }
+        .dm-serif-display-regular {
+        font-family: "DM Serif Display";
+        font-weight: 600;
+        font-style: normal;
+        color: aliceblue;
         }
         body {
             background-color: #000;
             color: #F0EDCF;
             line-height: 1.6;
+            
         }
         h1, h2, h3 {
             text-align: center;
@@ -23,29 +32,28 @@
             color: #40a2d8;
         }
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             color: #40a2d8;
         }
         h3 {
             font-size: 1rem;
             color: #F0EDCF;
         }
-
-        /* Header styles */
         .heading {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            margin-top: 10px;
-        }
-        .logo1, .logo2 {
-            height: 150px;
-            width: auto;
-            margin:40px;
+            justify-content: center; /* Center align both logos and text */
+            gap: 100px; /* Add small spacing between logos and text */
+            padding: 20px;
+            margin-top: 5px;
         }
 
-        /* Events section */
+        .logo1, .logo2 {
+            height: 120PX; /* Adjust size for closer fit */
+            width: auto;
+            margin: 0; /* Remove extra margins */
+        }
+
         .events {
             display: flex;
             flex-wrap: wrap;
@@ -54,7 +62,7 @@
             gap: 40px;
         }
         .event {
-            background-color: #1a1a1a;
+            background-color: #2b2a2a;
             border-radius: 10px;
             padding: 20px;
             width: 300px;
@@ -62,27 +70,90 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            font-family: "DM Serif Display";
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border:5px solid  white;
+            border-radius: 20px;
+        }
+        .navbar {
+        display: flex; /* Create a flex container */
+        justify-content: space-around; /* Distribute buttons evenly */
+        align-items: center; /* Center align items vertically */
+        background-color: #333; /* Dark background color */
+        padding: 10px; /* Add some padding around the bar */
+        position: sticky; /* Make it stick to the top of the viewport */
+        top: 0;
+        z-index: 1000;
+        flex-wrap: wrap; /* Allow buttons to wrap to a new row if necessary */
+        }
+
+        /* Buttons inside the navigation bar */
+        .nav-button {
+        background-color: #fff; /* Button background color */
+        color: #000; /* Button text color */
+        box-shadow: 1px 1px 10px #000;
+        padding: 10px 20px; /* Add padding for a nice size */
+        font-size: 16px; /* Adjust font size */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+        margin: 5px; /* Add spacing between buttons */
+        text-decoration: none;
+        font-weight: bold;
+        
+        }
+
+        /* Button hover effect */
+        .nav-button:hover {
+        background-color: #42c9e4; /* Change color on hover */
+        }
+
+
+        /* Make the navigation bar sticky at the top */
+        .navbar {
+        background-color: #00d0ff;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
         }
         .event:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+            transform: translateY(-20px);
+            box-shadow: 0 20px 40px #2bdaf5;
         }
         .eimg {
             width: 100%;
             height: auto;
             border-radius: 10px;
             margin-bottom: 15px;
+            border:5px solid  white;
+            border-radius: 15px;
         }
-        h2 {
+        .oswald-glow {
+            font-family: "Oswald", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
             margin-bottom: 5px;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            color:rgb(0, 0, 0);
+            -webkit-animation:infinite;
+            text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px rgb(234, 232, 200),
+                0 0 30px rgb(91, 185, 232),
+                0 0 40px rgb(91, 185, 232),
+                0 0 55px rgb(27, 132, 185),
+                0 0 70px rgb(4, 36, 53);
+           
         }
         p {
-            color: #cfcfcf;
-            font-size: 0.9rem;
+            color: whitesmoke;
+            font-size: 0.7rem;
             margin-bottom: 20px;
             text-align: justify;
+            font-size: medium;
+            font-weight: 600;
+            
         }
         .event-content {
             display: flex;
@@ -99,30 +170,41 @@
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color: #d72e2e;
-            color: bisque;
+            background-color: #ff0c0c;
+            color: rgb(91, 185, 232);
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            border: white solid 2px
         }
         button:hover {
             background-color: rgb(4, 157, 253);
         }
         button:active {
-            background-color: greenyellow;
+            background-color: blueyellow;
             color: black;
         }
-
-        /* Section heading */
         .topicheading {
             margin: 50px auto 20px;
             text-align: center;
             font-size: 1.8rem;
             color: red;
+            margin-bottom: 35px;
         }
 
-        /* Responsive adjustments */
+        .cinzel {
+            font-family: "Cinzel", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            font-size:2.8rem;
+            margin-top: 5px;
+            color: rgb(255, 250, 250) !important;
+            box-shadow: #00d9fa 0px 0px 40px 10px;
+            background-color: rgb(18, 27, 29);
+            
+        }
         @media (max-width: 768px) {
             .heading {
                 flex-direction: column;
@@ -141,97 +223,87 @@
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <div class="navbar" role="navigation">
+        <a class="nav-button" href="C:\Users\DELL\OneDrive\New folder\OneDrive\Desktop\Projects\FWD-3rdSem-ClgClubPortal\FWD\Home.1.html"  aria-label="Navigate to Home">HOME</a>
+        <a class="nav-button" href="C:\Users\DELL\OneDrive\New folder\OneDrive\Desktop\Projects\FWD-3rdSem-ClgClubPortal\FWD\UE.1.html"  aria-label="Navigate to Upcoming Events">UPCOMING EVENTS</a>
+        <a class="nav-button" href="C:\Users\DELL\OneDrive\New folder\OneDrive\Desktop\Projects\FWD-3rdSem-ClgClubPortal\FWD\PE.1.html"  aria-label="Navigate to Past Events">PAST EVENTS</a>
+    </div>
     <div class="heading">
         <a href="https://www.bmsce.ac.in/" target="_blank">
             <img class="logo1" src="BMSCE.webp" alt="BMSCE">
         </a>
         <div class="flex2">
-            <h1>BMS COLLEGE OF ENGINEERING</h1>
-            <h1 style="color:#d72e2e;">PENTAGRAM</h1>
-            <h2 style="color:bisque">The Mathematical Society of BMSCE</h2>
+            <h1 style="COLOR:#FFF; text-align: center; height:90px; padding-TOP:10px;padding-bottom: 0px;margin-bottom: 0px; font-sizE:40PX;">PENTAGRAM</h1>
         </div>
-        <a href="file:///C:/Users/DELL/Downloads/CLUB.html" target="_blank">
+        <a href="C:\Users\DELL\OneDrive\New folder\OneDrive\Desktop\Projects\FWD-3rdSem-ClgClubPortal\FWD\Home.html" target="_blank">
             <img class="logo2" src="pentagram.png" alt="BMSCE Pentagram">
         </a>
     </div>
-
-    <!-- Events Section -->
-    <h1 class="topicheading" style="color:#d72e2e; font-size: xxxxxx-large;">UPCOMING EVENTS</h1>
-    <h2>Thanks for your Patience!</h2>
-    <h3>We are back with more exciting events!</h3>
+    <h1 class="topicheading cinzel" style="margin-top: 0px; padding-top:0px;  color:#FFF; font-size: xxxxxx-large;">UPCOMING EVENTS</h1>
+    <h2 class="dm-serif-display-regular">Thanks for your Patience!</h2>
+    <h3 class="dm-serif-display-regular">We are back with more exciting events!</h3>
     <div class="events">
-        <!-- Event 1 -->
         <div class="event">
             <img class="eimg" src="Screenshot 2024-11-14 211911.png" alt="Eureka Orientation">
             <div class="event-content">
-                <h2>EUREKA ORIENTATION</h2>
-                <p>Kickstart your journey with Pentagram through exciting games and engaging activities! Happening on November 8, 2024, in Audi 1, PJ Block.</p>
+                <h3 class="oswald-glow">EUREKA ORIENTATION</h3>
+                <p class="dm-serif-display-regular">Kickstart your journey with Pentagram through exciting games and engaging activities! Happening on November 8, 2024, in Audi 1, PJ Block.</p>
             </div>
             <div class="button-wrapper">
-                <button>Register</button>
+                <a href="REG.html.html"><button class="dm-serif-display-regular">Register</button></a>
             </div>
         </div>
-
-        <!-- Event 2 -->
         <div class="event">
             <img class="eimg" src="Screenshot 2024-11-14 212221.png" alt="Encipher">
             <div class="event-content">
-                <h2>ENCIPHER</h2>
-                <p>Test your wits with thrilling puzzles online and compete for cash prizes. Join us on July 10, 2024, from 6 to 8:30 PM!</p>
+                <h3 class="dm-serif-display-regular oswald-glow">ENCIPHER</h3>
+                <p class="dm-serif-display-regular">Test your wits with thrilling puzzles online and compete for cash prizes. Join us on July 10, 2024, from 6 to 8:30 PM!</p>
             </div>
             <div class="button-wrapper">
-                <button>Register</button>
+                <a href="REG.html.html"><button class="dm-serif-display-regular">Register</button></a>
             </div>
         </div>
-
-        <!-- Event 3 -->
         <div class="event">
             <img class="eimg" src="Screenshot 2024-11-14 212321.png" alt="Pi Carnival">
             <div class="event-content">
-                <h2>PI CARNIVAL</h2>
-                <p>Experience the joy of math through games, contests, and a festive atmosphere. Join us on July 9-10, 2024, at Bookmark.</p>
+                <h3 class="dm-serif-display-regular oswald-glow">PI CARNIVAL</h3>
+                <p class="dm-serif-display-regular">Experience the joy of math through games, contests, and a festive atmosphere. Join us on July 9-10, 2024, at Bookmark.</p>
             </div>
             <div class="button-wrapper">
-                <button>Register</button>
+                <a href="REG.html.html"><button class="dm-serif-display-regular">Register</button></a>
             </div>
         </div>
     </div>
 
     <div class="events">
-        <!-- Event 4 -->
         <div class="event">
             <img class="eimg" src="Screenshot 2024-11-14 220943.png" alt="Battle of Brains">
             <div class="event-content">
-                <h2>BATTLE OF BRAINS</h2>
-                <p>Prove your intellect in this fast-paced quiz! Be there on May 18, 2024, at 10 AM in the MESH Block.</p>
+                <h3 class="dm-serif-display-regular oswald-glow">BATTLE OF BRAINS</h3>
+                <p class="dm-serif-display-regular">Prove your intellect in this fast-paced quiz! Be there on May 18, 2024, at 10 AM in the MESH Block.</p>
             </div>
             <div class="button-wrapper">
-                <button>Register</button>
+                <a href="REG.html.html"><button class="dm-serif-display-regular">Register</button></a>
             </div>
         </div>
-
-        <!-- Event 5 -->
         <div class="event">
             <img class="eimg" src="Screenshot 2024-11-14 220907.png" alt="Escape Room">
             <div class="event-content">
-                <h2>ESCAPE ROOM</h2>
-                <p>Crack codes and solve mysteries to win! Happening on May 19, 2024.</p>
+                <h3 class="dm-serif-display-regular oswald-glow">ESCAPE ROOM</h3>
+                <p class="dm-serif-display-regular">Crack codes and solve mysteries to win! Happening on May 19, 2024.</p>
             </div>
             <div class="button-wrapper">
-                <button>Register</button>
+                <a href="REG.html.html"><button class="dm-serif-display-regular">Register</button></a>
             </div>
         </div>
-
-        <!-- Event 6 -->
         <div class="event">
             <img class="eimg" src="Screenshot 2024-11-14 220830.png" alt="Volt Victory">
             <div class="event-content">
-                <h2>VOLT VICTORY</h2>
-                <p>Showcase your skills in this exciting collaboration event! Happening on June 12, 2024, in CR-G01, PJ Block.</p>
+                <h3 class="dm-serif-display-regular oswald-glow">VOLT VICTORY</h3>
+                <p class="dm-serif-display-regular">Showcase your skills in this exciting collaboration event! Happening on June 12, 2024, in CR-G01, PJ Block.</p>
             </div>
             <div class="button-wrapper">
-                <button>Register</button>
+                <a href="REG.html.html"><button class="dm-serif-display-regular">Register</button></a>
             </div>
         </div>
     </div>
